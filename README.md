@@ -4,4 +4,4 @@ Pequeño programa Java para seleccionar entre distintas opciones y generar un ti
 
 ## Ejemplo visual de la interfaz
 
-![App Screenshot](https://lh3.googleusercontent.com/NNdOrsl9uSq3pA1uqRm4t9ej_g9zl8SUpM5A3WzJ0JvK72Sv2Sady6auAaYbE-_kW9E8uhTwih4p8Ks=w1903-h969)
+![App Screenshot](https://lh3.googleusercontent.com/AkPRfmKPEiuEi_nWsENi_3VrzkEg6FdTssqt3W2aS8VkoilCPO8WEOVxOBd-b9zQAa0NSX0vWhdSpJs=w1903-h969)
