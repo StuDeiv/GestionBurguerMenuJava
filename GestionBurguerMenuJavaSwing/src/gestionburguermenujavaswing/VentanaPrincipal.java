@@ -28,8 +28,49 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jSpinnerKetchup = new javax.swing.JSpinner();
+        jLabel27 = new javax.swing.JLabel();
+        jSpinnerBarbacoa = new javax.swing.JSpinner();
+        jLabel28 = new javax.swing.JLabel();
+        jSpinnerMostaza = new javax.swing.JSpinner();
+        jLabel29 = new javax.swing.JLabel();
+        jSpinnerThai = new javax.swing.JSpinner();
+        jButton1 = new javax.swing.JButton();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jTextFieldPrecio = new javax.swing.JTextField();
+        jTextFieldIVA = new javax.swing.JTextField();
+        jTextFieldPVP = new javax.swing.JTextField();
+        jRadioButtonPollo = new javax.swing.JRadioButton();
+        jRadioButtonCerdo = new javax.swing.JRadioButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButtonVegana = new javax.swing.JRadioButton();
+        jRadioButtonPanNormal = new javax.swing.JRadioButton();
+        jRadioButtonPanIntegral = new javax.swing.JRadioButton();
+        jRadioButtonPanCenteno = new javax.swing.JRadioButton();
+        jRadioButtonCaseras = new javax.swing.JRadioButton();
+        jRadioButtonFritas = new javax.swing.JRadioButton();
+        jRadioButtonGajo = new javax.swing.JRadioButton();
+        jRadioButtonCola = new javax.swing.JRadioButton();
+        jRadioButtonNaranja = new javax.swing.JRadioButton();
+        jRadioButtonLimón = new javax.swing.JRadioButton();
+        jRadioButtonAgua = new javax.swing.JRadioButton();
+        jRadioButtonCerveza = new javax.swing.JRadioButton();
+        jRadioButtonDoble = new javax.swing.JRadioButton();
+        jRadioButtonExtraQueso = new javax.swing.JRadioButton();
+        jRadioButtonExtraPatatas = new javax.swing.JRadioButton();
+        jRadioButtonDomicilio = new javax.swing.JRadioButton();
+        jRadioButtonLocal = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Burguer Menu App");
@@ -39,6 +80,87 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Hamburguesa");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setText("Pan");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setText("Patatas");
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel15.setText("Bebida");
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel21.setText("Opciones extra/adicionales");
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel25.setText("Salsas (+0,50€ cada una)");
+
+        jLabel26.setText("Ketchup");
+
+        jLabel27.setText("Barbacoa");
+
+        jLabel28.setText("Mostaza");
+
+        jLabel29.setText("Thai");
+
+        jButton1.setText("CALCULAR");
+
+        jLabel32.setText("PRECIO");
+
+        jLabel33.setText("IVA (21%)");
+
+        jLabel34.setText("P.V.P");
+
+        jRadioButtonPollo.setText("Pollo");
+
+        jRadioButtonCerdo.setText("Cerdo");
+
+        jRadioButton1.setText("Ternera (+1 €)");
+
+        jRadioButtonVegana.setText("Vegana (+1€)");
+
+        jRadioButtonPanNormal.setText("Normal");
+
+        jRadioButtonPanIntegral.setText("Integral");
+        jRadioButtonPanIntegral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonPanIntegralActionPerformed(evt);
+            }
+        });
+
+        jRadioButtonPanCenteno.setText("Centeno");
+
+        jRadioButtonCaseras.setText("Caseras (+1€)");
+
+        jRadioButtonFritas.setText("Fritas");
+
+        jRadioButtonGajo.setText("Gajo");
+
+        jRadioButtonCola.setText("Cola");
+
+        jRadioButtonNaranja.setText("Naranja");
+
+        jRadioButtonLimón.setText("Limón");
+
+        jRadioButtonAgua.setText("Agua");
+
+        jRadioButtonCerveza.setText("Cerveza");
+
+        jRadioButtonDoble.setText("Hamburguesa doble (+2€)");
+
+        jRadioButtonExtraQueso.setText("Extra de queso (+0,50€)");
+        jRadioButtonExtraQueso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonExtraQuesoActionPerformed(evt);
+            }
+        });
+
+        jRadioButtonExtraPatatas.setText("Extra de patatas (+1€)");
+
+        jRadioButtonDomicilio.setText("Reparto a domicilio");
+
+        jRadioButtonLocal.setText("Recogida en local");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -50,22 +172,193 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)))
-                .addContainerGap(212, Short.MAX_VALUE))
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2)
+                        .addGap(71, 71, 71)
+                        .addComponent(jLabel4)
+                        .addGap(75, 75, 75)
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButtonPollo)
+                            .addComponent(jRadioButtonCerdo)
+                            .addComponent(jRadioButton1)
+                            .addComponent(jRadioButtonVegana))
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButtonPanNormal)
+                            .addComponent(jRadioButtonPanIntegral)
+                            .addComponent(jRadioButtonPanCenteno))
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButtonFritas)
+                            .addComponent(jRadioButtonGajo)
+                            .addComponent(jRadioButtonCaseras)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel15))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jRadioButtonCola)
+                        .addGap(23, 23, 23)
+                        .addComponent(jRadioButtonNaranja)
+                        .addGap(27, 27, 27)
+                        .addComponent(jRadioButtonLimón)
+                        .addGap(27, 27, 27)
+                        .addComponent(jRadioButtonAgua)
+                        .addGap(19, 19, 19)
+                        .addComponent(jRadioButtonCerveza))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel21))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jRadioButtonDoble)
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel25))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jRadioButtonExtraQueso)
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel26)
+                        .addGap(11, 11, 11)
+                        .addComponent(jSpinnerKetchup, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel28)
+                        .addGap(10, 10, 10)
+                        .addComponent(jSpinnerMostaza, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jRadioButtonExtraPatatas)
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel27)
+                        .addGap(5, 5, 5)
+                        .addComponent(jSpinnerBarbacoa, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel29)
+                        .addGap(30, 30, 30)
+                        .addComponent(jSpinnerThai, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jRadioButtonDomicilio)
+                        .addGap(35, 35, 35)
+                        .addComponent(jRadioButtonLocal))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(jLabel32)
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel33)
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel34))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(jTextFieldIVA, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(jTextFieldPVP, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(11, 11, 11)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addContainerGap(470, Short.MAX_VALUE))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))))
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jRadioButtonPollo)
+                        .addGap(3, 3, 3)
+                        .addComponent(jRadioButtonCerdo)
+                        .addGap(0, 0, 0)
+                        .addComponent(jRadioButton1)
+                        .addGap(6, 6, 6)
+                        .addComponent(jRadioButtonVegana))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jRadioButtonPanNormal)
+                                .addGap(7, 7, 7)
+                                .addComponent(jRadioButtonPanIntegral)
+                                .addGap(7, 7, 7)
+                                .addComponent(jRadioButtonPanCenteno))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jRadioButtonFritas)
+                                .addGap(7, 7, 7)
+                                .addComponent(jRadioButtonGajo)
+                                .addGap(7, 7, 7)
+                                .addComponent(jRadioButtonCaseras)))))
+                .addGap(7, 7, 7)
+                .addComponent(jLabel15)
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRadioButtonCola)
+                    .addComponent(jRadioButtonNaranja)
+                    .addComponent(jRadioButtonLimón)
+                    .addComponent(jRadioButtonAgua)
+                    .addComponent(jRadioButtonCerveza))
+                .addGap(7, 7, 7)
+                .addComponent(jLabel21)
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRadioButtonDoble)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRadioButtonExtraQueso)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpinnerKetchup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpinnerMostaza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRadioButtonExtraPatatas)
+                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpinnerBarbacoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpinnerThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRadioButtonDomicilio)
+                    .addComponent(jRadioButtonLocal))
+                .addGap(17, 17, 17)
+                .addComponent(jButton1)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel32)
+                    .addComponent(jLabel33)
+                    .addComponent(jLabel34))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldIVA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldPVP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jRadioButtonPanIntegralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonPanIntegralActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonPanIntegralActionPerformed
+
+    private void jRadioButtonExtraQuesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonExtraQuesoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonExtraQuesoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,7 +397,48 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButtonAgua;
+    private javax.swing.JRadioButton jRadioButtonCaseras;
+    private javax.swing.JRadioButton jRadioButtonCerdo;
+    private javax.swing.JRadioButton jRadioButtonCerveza;
+    private javax.swing.JRadioButton jRadioButtonCola;
+    private javax.swing.JRadioButton jRadioButtonDoble;
+    private javax.swing.JRadioButton jRadioButtonDomicilio;
+    private javax.swing.JRadioButton jRadioButtonExtraPatatas;
+    private javax.swing.JRadioButton jRadioButtonExtraQueso;
+    private javax.swing.JRadioButton jRadioButtonFritas;
+    private javax.swing.JRadioButton jRadioButtonGajo;
+    private javax.swing.JRadioButton jRadioButtonLimón;
+    private javax.swing.JRadioButton jRadioButtonLocal;
+    private javax.swing.JRadioButton jRadioButtonNaranja;
+    private javax.swing.JRadioButton jRadioButtonPanCenteno;
+    private javax.swing.JRadioButton jRadioButtonPanIntegral;
+    private javax.swing.JRadioButton jRadioButtonPanNormal;
+    private javax.swing.JRadioButton jRadioButtonPollo;
+    private javax.swing.JRadioButton jRadioButtonVegana;
+    private javax.swing.JSpinner jSpinnerBarbacoa;
+    private javax.swing.JSpinner jSpinnerKetchup;
+    private javax.swing.JSpinner jSpinnerMostaza;
+    private javax.swing.JSpinner jSpinnerThai;
+    private javax.swing.JTextField jTextFieldIVA;
+    private javax.swing.JTextField jTextFieldPVP;
+    private javax.swing.JTextField jTextFieldPrecio;
     // End of variables declaration//GEN-END:variables
 }
