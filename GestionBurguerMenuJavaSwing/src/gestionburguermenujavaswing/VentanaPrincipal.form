@@ -2,9 +2,17 @@
 
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    <Component class="javax.swing.ButtonGroup" name="buttonGroupPan">
     </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup2">
+    <Component class="javax.swing.ButtonGroup" name="buttonGroupPatatas">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroupHamburguesa">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroupBebida">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroupExtra">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroupReparto">
     </Component>
   </NonVisualComponents>
   <Properties>
@@ -123,7 +131,7 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="160" pref="160" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonCalcular" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="120" pref="120" max="-2" attributes="0"/>
@@ -232,7 +240,7 @@
                   <Component id="jRadioButtonLocal" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="jButtonCalcular" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
@@ -335,7 +343,7 @@
     </Component>
     <Component class="javax.swing.JSpinner" name="jSpinnerThai">
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="jButtonCalcular">
       <Properties>
         <Property name="text" type="java.lang.String" value="CALCULAR"/>
       </Properties>
@@ -363,31 +371,49 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonPollo">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupHamburguesa"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Pollo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonCerdo">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupHamburguesa"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Cerdo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButton1">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupHamburguesa"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Ternera (+1 &#x20ac;)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonVegana">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupHamburguesa"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Vegana (+1&#x20ac;)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonPanNormal">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupPan"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Normal"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonPanIntegral">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupPan"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Integral"/>
       </Properties>
       <Events>
@@ -396,56 +422,89 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonPanCenteno">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupPan"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Centeno"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonCaseras">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupPatatas"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Caseras (+1&#x20ac;)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonFritas">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupPatatas"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Fritas"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonGajo">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupPatatas"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Gajo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonCola">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupBebida"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Cola"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonNaranja">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupBebida"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Naranja"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonLim&#xf3;n">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupBebida"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Lim&#xf3;n"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonAgua">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupBebida"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Agua"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonCerveza">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupBebida"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Cerveza"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonDoble">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupExtra"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Hamburguesa doble (+2&#x20ac;)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonExtraQueso">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupExtra"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Extra de queso (+0,50&#x20ac;)"/>
       </Properties>
       <Events>
@@ -454,16 +513,25 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonExtraPatatas">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupExtra"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Extra de patatas (+1&#x20ac;)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonDomicilio">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupReparto"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Reparto a domicilio"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonLocal">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupReparto"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Recogida en local"/>
       </Properties>
     </Component>

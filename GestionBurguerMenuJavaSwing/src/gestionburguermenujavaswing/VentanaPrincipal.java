@@ -16,6 +16,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal() {
         initComponents();
+        
     }
 
     /**
@@ -27,8 +28,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroupPan = new javax.swing.ButtonGroup();
+        buttonGroupPatatas = new javax.swing.ButtonGroup();
+        buttonGroupHamburguesa = new javax.swing.ButtonGroup();
+        buttonGroupBebida = new javax.swing.ButtonGroup();
+        buttonGroupExtra = new javax.swing.ButtonGroup();
+        buttonGroupReparto = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -44,7 +49,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jSpinnerMostaza = new javax.swing.JSpinner();
         jLabel29 = new javax.swing.JLabel();
         jSpinnerThai = new javax.swing.JSpinner();
-        jButton1 = new javax.swing.JButton();
+        jButtonCalcular = new javax.swing.JButton();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
@@ -104,7 +109,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel29.setText("Thai");
 
-        jButton1.setText("CALCULAR");
+        jButtonCalcular.setText("CALCULAR");
 
         jLabel32.setText("PRECIO");
 
@@ -112,16 +117,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel34.setText("P.V.P");
 
+        buttonGroupHamburguesa.add(jRadioButtonPollo);
         jRadioButtonPollo.setText("Pollo");
 
+        buttonGroupHamburguesa.add(jRadioButtonCerdo);
         jRadioButtonCerdo.setText("Cerdo");
 
+        buttonGroupHamburguesa.add(jRadioButton1);
         jRadioButton1.setText("Ternera (+1 €)");
 
+        buttonGroupHamburguesa.add(jRadioButtonVegana);
         jRadioButtonVegana.setText("Vegana (+1€)");
 
+        buttonGroupPan.add(jRadioButtonPanNormal);
         jRadioButtonPanNormal.setText("Normal");
 
+        buttonGroupPan.add(jRadioButtonPanIntegral);
         jRadioButtonPanIntegral.setText("Integral");
         jRadioButtonPanIntegral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,26 +140,37 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        buttonGroupPan.add(jRadioButtonPanCenteno);
         jRadioButtonPanCenteno.setText("Centeno");
 
+        buttonGroupPatatas.add(jRadioButtonCaseras);
         jRadioButtonCaseras.setText("Caseras (+1€)");
 
+        buttonGroupPatatas.add(jRadioButtonFritas);
         jRadioButtonFritas.setText("Fritas");
 
+        buttonGroupPatatas.add(jRadioButtonGajo);
         jRadioButtonGajo.setText("Gajo");
 
+        buttonGroupBebida.add(jRadioButtonCola);
         jRadioButtonCola.setText("Cola");
 
+        buttonGroupBebida.add(jRadioButtonNaranja);
         jRadioButtonNaranja.setText("Naranja");
 
+        buttonGroupBebida.add(jRadioButtonLimón);
         jRadioButtonLimón.setText("Limón");
 
+        buttonGroupBebida.add(jRadioButtonAgua);
         jRadioButtonAgua.setText("Agua");
 
+        buttonGroupBebida.add(jRadioButtonCerveza);
         jRadioButtonCerveza.setText("Cerveza");
 
+        buttonGroupExtra.add(jRadioButtonDoble);
         jRadioButtonDoble.setText("Hamburguesa doble (+2€)");
 
+        buttonGroupExtra.add(jRadioButtonExtraQueso);
         jRadioButtonExtraQueso.setText("Extra de queso (+0,50€)");
         jRadioButtonExtraQueso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,10 +178,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        buttonGroupExtra.add(jRadioButtonExtraPatatas);
         jRadioButtonExtraPatatas.setText("Extra de patatas (+1€)");
 
+        buttonGroupReparto.add(jRadioButtonDomicilio);
         jRadioButtonDomicilio.setText("Reparto a domicilio");
 
+        buttonGroupReparto.add(jRadioButtonLocal);
         jRadioButtonLocal.setText("Recogida en local");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -246,7 +271,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(jRadioButtonLocal))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(160, 160, 160)
-                        .addComponent(jButton1))
+                        .addComponent(jButtonCalcular))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addComponent(jLabel32)
@@ -335,7 +360,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jRadioButtonDomicilio)
                     .addComponent(jRadioButtonLocal))
                 .addGap(17, 17, 17)
-                .addComponent(jButton1)
+                .addComponent(jButtonCalcular)
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel32)
@@ -396,9 +421,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JButton jButton1;
+    private javax.swing.ButtonGroup buttonGroupBebida;
+    private javax.swing.ButtonGroup buttonGroupExtra;
+    private javax.swing.ButtonGroup buttonGroupHamburguesa;
+    private javax.swing.ButtonGroup buttonGroupPan;
+    private javax.swing.ButtonGroup buttonGroupPatatas;
+    private javax.swing.ButtonGroup buttonGroupReparto;
+    private javax.swing.JButton jButtonCalcular;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
