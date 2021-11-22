@@ -5,18 +5,106 @@
  */
 package gestionburguermenujavaswing;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author dsantosc04
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
+    private final double IMPORTE_BASICO = 8;
+    private final double SUPLEMENTO_SALSA = 0.5;
+    private final double DESCUENTO_LOCAL = 0.2;    
+    private final double IVA = 0.21;
+
+    private String opcHamburguesa;
+    private String opcPan;
+    private String opcPatatas;
+    private String opcBebida;
+    private String opcReparto;
+    private boolean opcExtraHamburguesa;
+    private boolean opcExtraQueso;
+    private boolean opcExtraPatatas;
+    private int opcKetchup;
+    private int opcMostaza;
+    private int opcBarbacoa;
+    private int opcThai;
+    private double importeTotal;
+    private double importeConIVA;
+    private double importeImpuestos;
+    private int totalPedidosRegistrados;
+
     /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
         initComponents();
-        
+        totalPedidosRegistrados = 0;
+    }
+
+    public void calculoImporteTotal() {
+        try {
+            importeTotal = 8;
+            if (opcHamburguesa.contains("Ternera") || opcHamburguesa.contains("Vegana")) {
+                importeTotal += 1;
+            }
+            if (opcPatatas.contains("Caseras")) {
+                importeTotal += 1;
+            }
+            if (opcExtraHamburguesa) {
+                importeTotal += 2;
+            }
+            if (opcExtraQueso) {
+                importeTotal += 0.5;
+            }
+            if (opcExtraPatatas) {
+                importeTotal += 1;
+            }
+            
+            if (opcReparto.contains("Local")) {
+                importeTotal = importeTotal - (importeTotal*DESCUENTO_LOCAL);
+            }
+            
+            importeTotal += (opcKetchup*SUPLEMENTO_SALSA);
+            importeTotal += (opcMostaza*SUPLEMENTO_SALSA);
+            importeTotal += (opcBarbacoa*SUPLEMENTO_SALSA);
+            importeTotal += (opcThai*SUPLEMENTO_SALSA);
+            
+            importeConIVA = importeTotal*IVA;
+            importeImpuestos = importeTotal + importeConIVA;
+            this.jTextFieldPrecio.setText(String.valueOf(importeTotal));
+            this.jTextFieldIVA.setText(String.valueOf(importeConIVA));
+            this.jTextFieldPVP.setText(String.valueOf(importeImpuestos));
+        } catch (NullPointerException e) {
+            this.jTextFieldPrecio.setText("");
+        }
+
+    }
+
+    public void recogerDatosUsuario() {
+        try {
+            opcHamburguesa = this.buttonGroupHamburguesa.getSelection().getActionCommand();
+            opcPan = this.buttonGroupPan.getSelection().getActionCommand();
+            opcPatatas = this.buttonGroupPatatas.getSelection().getActionCommand();
+            opcBebida = this.buttonGroupBebida.getSelection().getActionCommand();
+            opcReparto = this.buttonGroupReparto.getSelection().getActionCommand();
+            opcKetchup = Integer.parseInt(this.jSpinnerKetchup.getValue().toString());
+            opcMostaza = Integer.parseInt(this.jSpinnerMostaza.getValue().toString());
+            opcBarbacoa = Integer.parseInt(this.jSpinnerBarbacoa.getValue().toString());
+            opcThai = Integer.parseInt(this.jSpinnerThai.getValue().toString());
+            opcExtraHamburguesa = this.jCheckBoxHamburguesa.isSelected();
+            opcExtraPatatas = this.jCheckBoxExtraPatatas.isSelected();
+            opcExtraQueso = this.jCheckBoxExtraQueso.isSelected();
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(this, "Elige una de las opciones obligatorias del menú", "Error datos", JOptionPane.ERROR_MESSAGE);
+            this.jTextFieldPrecio.setText("");
+        }
+
     }
 
     /**
@@ -71,11 +159,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jRadioButtonLimón = new javax.swing.JRadioButton();
         jRadioButtonAgua = new javax.swing.JRadioButton();
         jRadioButtonCerveza = new javax.swing.JRadioButton();
-        jRadioButtonDoble = new javax.swing.JRadioButton();
-        jRadioButtonExtraQueso = new javax.swing.JRadioButton();
-        jRadioButtonExtraPatatas = new javax.swing.JRadioButton();
         jRadioButtonDomicilio = new javax.swing.JRadioButton();
         jRadioButtonLocal = new javax.swing.JRadioButton();
+        jCheckBoxHamburguesa = new javax.swing.JCheckBox();
+        jCheckBoxExtraQueso = new javax.swing.JCheckBox();
+        jCheckBoxExtraPatatas = new javax.swing.JCheckBox();
+        jButtonRegistrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Burguer Menu App");
@@ -110,6 +199,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel29.setText("Thai");
 
         jButtonCalcular.setText("CALCULAR");
+        jButtonCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCalcularActionPerformed(evt);
+            }
+        });
 
         jLabel32.setText("PRECIO");
 
@@ -119,21 +213,32 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         buttonGroupHamburguesa.add(jRadioButtonPollo);
         jRadioButtonPollo.setText("Pollo");
+        jRadioButtonPollo.setActionCommand("Pollo");
+        jRadioButtonPollo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonPolloActionPerformed(evt);
+            }
+        });
 
         buttonGroupHamburguesa.add(jRadioButtonCerdo);
         jRadioButtonCerdo.setText("Cerdo");
+        jRadioButtonCerdo.setActionCommand("Cerdo");
 
         buttonGroupHamburguesa.add(jRadioButton1);
         jRadioButton1.setText("Ternera (+1 €)");
+        jRadioButton1.setActionCommand("Ternera");
 
         buttonGroupHamburguesa.add(jRadioButtonVegana);
         jRadioButtonVegana.setText("Vegana (+1€)");
+        jRadioButtonVegana.setActionCommand("Vegana");
 
         buttonGroupPan.add(jRadioButtonPanNormal);
         jRadioButtonPanNormal.setText("Normal");
+        jRadioButtonPanNormal.setActionCommand("Normal");
 
         buttonGroupPan.add(jRadioButtonPanIntegral);
         jRadioButtonPanIntegral.setText("Integral");
+        jRadioButtonPanIntegral.setActionCommand("Integral");
         jRadioButtonPanIntegral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonPanIntegralActionPerformed(evt);
@@ -142,50 +247,60 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         buttonGroupPan.add(jRadioButtonPanCenteno);
         jRadioButtonPanCenteno.setText("Centeno");
+        jRadioButtonPanCenteno.setActionCommand("Centeno");
 
         buttonGroupPatatas.add(jRadioButtonCaseras);
         jRadioButtonCaseras.setText("Caseras (+1€)");
+        jRadioButtonCaseras.setActionCommand("Caseras");
 
         buttonGroupPatatas.add(jRadioButtonFritas);
         jRadioButtonFritas.setText("Fritas");
+        jRadioButtonFritas.setActionCommand("Fritas");
 
         buttonGroupPatatas.add(jRadioButtonGajo);
         jRadioButtonGajo.setText("Gajo");
+        jRadioButtonGajo.setActionCommand("Gajo");
 
         buttonGroupBebida.add(jRadioButtonCola);
         jRadioButtonCola.setText("Cola");
+        jRadioButtonCola.setActionCommand("Cola");
 
         buttonGroupBebida.add(jRadioButtonNaranja);
         jRadioButtonNaranja.setText("Naranja");
+        jRadioButtonNaranja.setActionCommand("Naranja");
 
         buttonGroupBebida.add(jRadioButtonLimón);
         jRadioButtonLimón.setText("Limón");
+        jRadioButtonLimón.setActionCommand("Limon");
 
         buttonGroupBebida.add(jRadioButtonAgua);
         jRadioButtonAgua.setText("Agua");
+        jRadioButtonAgua.setActionCommand("Agua");
 
         buttonGroupBebida.add(jRadioButtonCerveza);
         jRadioButtonCerveza.setText("Cerveza");
-
-        buttonGroupExtra.add(jRadioButtonDoble);
-        jRadioButtonDoble.setText("Hamburguesa doble (+2€)");
-
-        buttonGroupExtra.add(jRadioButtonExtraQueso);
-        jRadioButtonExtraQueso.setText("Extra de queso (+0,50€)");
-        jRadioButtonExtraQueso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonExtraQuesoActionPerformed(evt);
-            }
-        });
-
-        buttonGroupExtra.add(jRadioButtonExtraPatatas);
-        jRadioButtonExtraPatatas.setText("Extra de patatas (+1€)");
+        jRadioButtonCerveza.setActionCommand("Cerveza");
 
         buttonGroupReparto.add(jRadioButtonDomicilio);
         jRadioButtonDomicilio.setText("Reparto a domicilio");
+        jRadioButtonDomicilio.setActionCommand("Domiclio");
 
         buttonGroupReparto.add(jRadioButtonLocal);
-        jRadioButtonLocal.setText("Recogida en local");
+        jRadioButtonLocal.setText("Recogida en local (-20% dto.)");
+        jRadioButtonLocal.setActionCommand("Local");
+
+        jCheckBoxHamburguesa.setText("Hamburguesa doble (+2€)");
+
+        jCheckBoxExtraQueso.setText("Extra de queso (+0,50€)");
+
+        jCheckBoxExtraPatatas.setText("Extra de patatas (+1€)");
+
+        jButtonRegistrar.setText("<html> Registar <br> pedido </html>");
+        jButtonRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegistrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -238,55 +353,61 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(jLabel21))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jRadioButtonDoble)
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel25))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jRadioButtonExtraQueso)
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel26)
-                        .addGap(11, 11, 11)
-                        .addComponent(jSpinnerKetchup, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel28)
-                        .addGap(10, 10, 10)
-                        .addComponent(jSpinnerMostaza, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jRadioButtonExtraPatatas)
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel27)
-                        .addGap(5, 5, 5)
-                        .addComponent(jSpinnerBarbacoa, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel29)
-                        .addGap(30, 30, 30)
-                        .addComponent(jSpinnerThai, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addComponent(jRadioButtonDomicilio)
                         .addGap(35, 35, 35)
                         .addComponent(jRadioButtonLocal))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(jButtonCalcular))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(jLabel32)
-                        .addGap(42, 42, 42)
-                        .addComponent(jLabel33)
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel34))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
                         .addComponent(jTextFieldIVA, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
-                        .addComponent(jTextFieldPVP, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                        .addComponent(jTextFieldPVP, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(120, 120, 120)
+                                .addComponent(jLabel32)
+                                .addGap(42, 42, 42)
+                                .addComponent(jLabel33))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(160, 160, 160)
+                                .addComponent(jButtonCalcular)))
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel34))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jCheckBoxExtraPatatas)
+                                .addGap(43, 43, 43)
+                                .addComponent(jLabel27)
+                                .addGap(5, 5, 5)
+                                .addComponent(jSpinnerBarbacoa, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel29)
+                                .addGap(30, 30, 30)
+                                .addComponent(jSpinnerThai, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jCheckBoxHamburguesa)
+                                .addGap(29, 29, 29)
+                                .addComponent(jLabel25))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jCheckBoxExtraQueso)
+                                .addGap(35, 35, 35)
+                                .addComponent(jLabel26)
+                                .addGap(11, 11, 11)
+                                .addComponent(jSpinnerKetchup, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(jLabel28)
+                                .addGap(10, 10, 10)
+                                .addComponent(jSpinnerMostaza, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(34, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButtonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,25 +458,34 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jRadioButtonCerveza))
                 .addGap(7, 7, 7)
                 .addComponent(jLabel21)
-                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButtonDoble)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBoxHamburguesa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButtonExtraQueso)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinnerKetchup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinnerMostaza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSpinnerKetchup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSpinnerMostaza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jCheckBoxExtraQueso)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButtonExtraPatatas)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jCheckBoxExtraPatatas))
                     .addComponent(jSpinnerBarbacoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSpinnerThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRadioButtonDomicilio)
                     .addComponent(jRadioButtonLocal))
@@ -371,7 +501,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldIVA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldPVP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -381,9 +513,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButtonPanIntegralActionPerformed
 
-    private void jRadioButtonExtraQuesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonExtraQuesoActionPerformed
+    private void jButtonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalcularActionPerformed
+        recogerDatosUsuario();
+        calculoImporteTotal();
+    }//GEN-LAST:event_jButtonCalcularActionPerformed
+
+    private void jRadioButtonPolloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonPolloActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonExtraQuesoActionPerformed
+    }//GEN-LAST:event_jRadioButtonPolloActionPerformed
+
+    private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
+        totalPedidosRegistrados++;
+        try {
+            FileWriter fw = new FileWriter("registro-pedidos.txt", true);
+            PrintWriter pw = new PrintWriter(fw);
+            String cadena = "Pedido: "+totalPedidosRegistrados+".Importe: "+String.valueOf(importeImpuestos);
+            pw.println(cadena);
+            pw.close();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -428,6 +577,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroupPatatas;
     private javax.swing.ButtonGroup buttonGroupReparto;
     private javax.swing.JButton jButtonCalcular;
+    private javax.swing.JButton jButtonRegistrar;
+    private javax.swing.JCheckBox jCheckBoxExtraPatatas;
+    private javax.swing.JCheckBox jCheckBoxExtraQueso;
+    private javax.swing.JCheckBox jCheckBoxHamburguesa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
@@ -448,10 +601,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonCerdo;
     private javax.swing.JRadioButton jRadioButtonCerveza;
     private javax.swing.JRadioButton jRadioButtonCola;
-    private javax.swing.JRadioButton jRadioButtonDoble;
     private javax.swing.JRadioButton jRadioButtonDomicilio;
-    private javax.swing.JRadioButton jRadioButtonExtraPatatas;
-    private javax.swing.JRadioButton jRadioButtonExtraQueso;
     private javax.swing.JRadioButton jRadioButtonFritas;
     private javax.swing.JRadioButton jRadioButtonGajo;
     private javax.swing.JRadioButton jRadioButtonLimón;
